@@ -1,8 +1,3 @@
-
-<a href="https://image.intervention.io/v2/introduction/installation" target="_blank">Intervention for Image Customizations</a>
-<a href="https://sweetalert2.github.io/" target="_blank">Sweet Alert for Pop ups</a>
-
-
 ## About Health Mart
 
 Health Mart aims to provide medical services at doorstep in Pakistan.
@@ -17,3 +12,10 @@ Sir Muhammad Ibrahim
 
 
 COMSATS Wah University, Wah Cant, Pakistan
+
+
+##Used Resources:
+
+<a href="https://image.intervention.io/v2/introduction/installation" target="_blank">Intervention for Image Customizations</a>
+<a href="https://sweetalert2.github.io/" target="_blank">Sweet Alert for Pop ups</a>
+
