@@ -14,7 +14,7 @@ Sir Muhammad Ibrahim
 COMSATS Wah University, Wah Cant, Pakistan
 
 
-##Used Resources:  
+## Used Resources:  
 
 <a href="https://image.intervention.io/v2/introduction/installation" target="_blank">Intervention for Image Customizations</a>  
 <a href="https://sweetalert2.github.io/" target="_blank">Sweet Alert for Pop ups</a>
