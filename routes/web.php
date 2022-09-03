@@ -6,6 +6,8 @@ use App\Http\Controllers\Backend\AdminProfileController;
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\SubCategoryController;
+use App\Http\Controllers\Backend\ProductController;
+
 use App\Http\Controllers\Frontend\IndexController;
 use App\Models\User;
 
@@ -88,5 +90,12 @@ Route::post('/sub/child/store', [SubCategoryController::class, 'ChildCategorySto
 Route::get('/sub/child/edit/{id}', [SubCategoryController::class, 'ChildCategoryEdit']) -> name('childcategory.edit');
 Route::post('/sub/child/update', [SubCategoryController::class, 'ChildCategoryUpdate']) -> name('childcategory.update');
 Route::get('/sub/child/delete/{id}', [SubCategoryController::class, 'ChildCategoryDelete']) -> name('childcategory.delete');
+
+});
+
+//Routes for Products
+Route::prefix('product') -> group(function() {
+Route::get('/add', [ProductController::class, 'AddProduct']) -> name('add-product');
+
 
 });
