@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers\Backend;
 use App\Models\Category;
-
-
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -23,7 +21,6 @@ class CategoryController extends Controller
             'category_name_ur.required' => 'Input category name in Urdu',
 
         ]);
-        
 
         Category::insert([
             'category_name_en' => $request -> category_name_en,
@@ -40,6 +37,7 @@ class CategoryController extends Controller
 
         return redirect() -> back() -> with($notification);
     }
+
     public function CategoryEdit($id) {
         $category = Category::findOrFail($id);
         return view('backend.category.category_edit', compact('category'));
