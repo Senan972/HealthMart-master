@@ -93,5 +93,75 @@ class SubCategoryController extends Controller
         return json_encode($subcat);
 
     }
+    
+    public function ChildCategoryStore(Request $request) {
+        $request -> validate([
+            'category_id' => 'required',
+            'subcategory_id' => 'required',
+            'childcategory_name_en' => 'required',
+            'childcategory_name_ur' => 'required',
+        ],[
+            'category_id.required' => 'You must select one option',
+            'childcategory_name_en.required' => 'Input sub category name in English',
+
+        ]);
+        
+
+        ChildCategory::insert([
+            'category_id' => $request -> category_id,
+            'subcategory_id' => $request -> subcategory_id,
+            'childcategory_name_en' => $request -> childcategory_name_en,
+            'childcategory_name_ur' => $request -> childcategory_name_ur,
+            'childcategory_slug_en' => strtolower(str_replace(' ', '-', $request -> childcategory_name_en)),
+            'childcategory_slug_ur' => str_replace(' ', '-', $request -> childcategory_name_ur),
+
+        ]);
+        $notification = array(
+            'message' => 'Child Category Added Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect() -> back() -> with($notification);
+    }
+
+    public function ChildCategoryEdit($id) {
+        $categories = Category::orderBy('category_name_en', 'ASC') -> get();
+        $subcategories = SubCategory::orderBy('subcategory_name_en', 'ASC') -> get();
+        $childcategories = ChildCategory::findOrFail($id);
+        return view('backend.category.childcategory_edit', compact('categories', 'subcategories', 'childcategories'));
+
+    }
+    public function ChildCategoryUpdate(Request $request) {
+        $childcat_id = $request -> id;
+
+        ChildCategory::findOrFail($childcat_id) -> update([
+            'category_id' => $request -> category_id,
+            'subcategory_id' => $request -> subcategory_id,
+            'childcategory_name_en' => $request -> childcategory_name_en,
+            'childcategory_name_ur' => $request -> childcategory_name_ur,
+            'childcategory_slug_en' => strtolower(str_replace(' ', '-', $request -> childcategory_name_en)),
+            'childcategory_slug_ur' => str_replace(' ', '-', $request -> childcategory_name_ur),
+
+        ]);
+        $notification = array(
+            'message' => 'Child Category Updated Successfully',
+            'alert-type' => 'info'
+        );
+
+        return redirect() -> route('all.childcategory') -> with($notification);
+
+    }
+
+    public function ChildCategoryDelete($id) {
+        ChildCategory::findOrFail($id) -> delete();
+
+        $notification = array(
+            'message' => 'Child Category Deleted Successfully',
+            'alert-type' => 'info'
+        );
+
+        return redirect() -> back() -> with($notification);
+
+    }
 
 }
