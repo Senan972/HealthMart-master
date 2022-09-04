@@ -59,5 +59,13 @@ class ProductController extends Controller
             'created_at' => Carbon::now(),
 
         ]);
+
+        //multi img upload
+        $images = $request -> file('multi_img');
+        foreach ($images as $img) {
+            $make_name = hexdec(uniqid()).'.'.$img -> getClientOriginalExtension();
+            Image::make($img) -> resize(917,1000) -> save('upload/products/multi-image/'.$name_gen);
+            $save_url = 'upload/products/multi-image'.$name_gen;
+        }
     }
 }
