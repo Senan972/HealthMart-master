@@ -60,7 +60,13 @@
 	<script src="{{ asset('../assets/vendor_components/apexcharts-bundle/dist/apexcharts.js') }}"></script>
   <script src="{{ asset('../assets/vendor_components/datatable/datatables.min.js') }}"></script>
 	<script src="{{ asset('backend/js/pages/data-table.js') }}"></script>
-	
+	{{-- tags input --}}
+  <script src="{{ asset('../assets/vendor_components/bootstrap-tagsinput/dist/bootstrap-tagsinput.js') }}"></script>
+  {{-- ck editor --}}
+  <script src="{{ asset('../assets/vendor_components/ckeditor/ckeditor.js') }}"></script>
+	<script src="{{ asset('../assets/vendor_plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.js') }}"></script>
+	<script src="{{ asset('backend/js/pages/editor.js') }}"></script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
