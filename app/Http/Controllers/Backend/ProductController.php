@@ -20,6 +20,12 @@ class ProductController extends Controller
 
     }
     public function StoreProduct(Request $request) {
+
+        $image = $request -> file('product_thumbnail');
+        $name_gen = hexdec(uniqid()).'.'.$image -> getClientOriginalExtension();
+        Image::make($image) -> resize(917,1000) -> save('upload/products/thumbnail/'.$name_gen);
+        $save_url = 'upload/products/thumbnail'.$name_gen;
+
         Product:insert([
             'brand_id' => $request -> brand_id,
             'category_id' => $request -> category_id,
@@ -47,7 +53,8 @@ class ProductController extends Controller
             'featured' => $request -> featured,
             'special_offer' => $request -> special_offer,
             'special_deals' => $request -> special_deals,
-            'product_thumbnail' => $request -> product_thumbnail,
+
+            'product_thumbnail' => save_url,
             'status' => 1,
             'created_at' => Carbon::now(),
 
