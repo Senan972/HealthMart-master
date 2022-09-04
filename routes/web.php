@@ -86,6 +86,7 @@ Route::get('/sub/delete/{id}', [SubCategoryController::class, 'SubCategoryDelete
 //Child categories for Admin
 Route::get('/sub/child/view', [SubCategoryController::class, 'ChildCategoryView']) -> name('all.childcategory');
 Route::get('/subcategory/ajax/{category_id}', [SubCategoryController::class, 'GetSubCategory']);
+Route::get('/childcategory/ajax/{subcategory_id}', [SubCategoryController::class, 'GetChildCategory']);
 Route::post('/sub/child/store', [SubCategoryController::class, 'ChildCategoryStore']) -> name('childcategory.store');
 Route::get('/sub/child/edit/{id}', [SubCategoryController::class, 'ChildCategoryEdit']) -> name('childcategory.edit');
 Route::post('/sub/child/update', [SubCategoryController::class, 'ChildCategoryUpdate']) -> name('childcategory.update');

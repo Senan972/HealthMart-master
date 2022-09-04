@@ -93,6 +93,13 @@ class SubCategoryController extends Controller
         return json_encode($subcat);
 
     }
+
+    public function GetChildCategory($subcategory_id) {
+        $childcat = ChildCategory::where('subcategory_id', $subcategory_id) -> orderBy('childcategory_name_en', 'ASC') -> get();
+        dump($childcat);
+        return json_encode($childcat);
+
+    }
     
     public function ChildCategoryStore(Request $request) {
         $request -> validate([
