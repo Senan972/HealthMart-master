@@ -67,7 +67,7 @@ class ProductController extends Controller
         foreach ($images as $img) {
             $make_name = hexdec(uniqid()).'.'.$img -> getClientOriginalExtension();
             Image::make($img) -> resize(917,1000) -> save('upload/products/multi-image/'.$make_name);
-            $uploadPath = 'upload/products/multi-image'.$make_name;
+            $uploadPath = 'upload/products/multi-image/'.$make_name;
 
             MultiImg::insert([
                 'product_id' => $product_id,
@@ -82,7 +82,7 @@ class ProductController extends Controller
             'alert-type' => 'success'
         );
 
-        return redirect() -> back() -> with($notification);
+        return redirect() -> route('manage-product') -> with($notification);
     }
 
     public function ManageProduct() {
