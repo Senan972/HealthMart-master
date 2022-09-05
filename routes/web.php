@@ -98,6 +98,7 @@ Route::get('/sub/child/delete/{id}', [SubCategoryController::class, 'ChildCatego
 Route::prefix('product') -> group(function() {
 Route::get('/add', [ProductController::class, 'AddProduct']) -> name('add-product');
 Route::post('/store', [ProductController::class, 'StoreProduct']) -> name('product-store');
+Route::get('/manage', [ProductController::class, 'ManageProduct']) -> name('manage-product');
 
 
 });

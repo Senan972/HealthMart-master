@@ -26,7 +26,7 @@ class ProductController extends Controller
         $image = $request -> file('product_thumbnail');
         $name_gen = hexdec(uniqid()).'.'.$image -> getClientOriginalExtension();
         Image::make($image) -> resize(917,1000) -> save('upload/products/thumbnail/'.$name_gen);
-        $save_url = 'upload/products/thumbnail'.$name_gen;
+        $save_url = 'upload/products/thumbnail/'.$name_gen;
 
         $product_id = Product::insertGetId([
             'brand_id' => $request -> brand_id,
@@ -83,5 +83,10 @@ class ProductController extends Controller
         );
 
         return redirect() -> back() -> with($notification);
+    }
+
+    public function ManageProduct() {
+        $products = Product::latest() -> get();
+        return view('backend.product.product_view', compact('products'));
     }
 }
