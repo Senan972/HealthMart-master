@@ -62,7 +62,6 @@ class ProductController extends Controller
 
         ]);
 
-        //multi img upload
         $images = $request -> file('multi_img');
         foreach ($images as $img) {
             $make_name = hexdec(uniqid()).'.'.$img -> getClientOriginalExtension();
