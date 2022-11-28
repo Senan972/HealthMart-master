@@ -33,7 +33,7 @@
                         <tr>
                             <td><img src="{{ asset($item -> slider_img) }}" style="width: 70px; height: 40px;"> </td>
                             
-                            <td>
+                            <td> 
                                 @if ($item -> title == NULL)
                                     <span class="badge badge-pill badge-danger">No Title</span>
                                 @else
@@ -52,8 +52,8 @@
                             </td>
                             
                             <td width="30%">
-                                <a href="{{ route('brand.edit', $item -> id) }}" class="btn btn-info" title="Edit"><i class="fa fa-pencil"></i></a>
-                                <a href="{{ route('brand.delete', $item -> id) }}" class="btn btn-danger" id="delete" title="Delete"><i class="fa fa-trash"></i></a>
+                                <a href="{{ route('slider.edit', $item -> id) }}" class="btn btn-info" title="Edit"><i class="fa fa-pencil"></i></a>
+                                <a href="{{ route('slider.edit', $item -> id) }}" class="btn btn-danger" id="delete" title="Delete"><i class="fa fa-trash"></i></a>
 
                                 @if ($item -> status == 1)
                                     <a href="{{ route('product.inactive', $item -> id) }}" class="btn btn-danger" title="Inactive Now"><i class="fa fa-arrow-down"></i></a>
