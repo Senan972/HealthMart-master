@@ -105,5 +105,6 @@ Route::post('/data/update', [ProductController::class, 'ProductDataUpdate']) -> 
 Route::post('/image/update', [ProductController::class, 'MultiImageUpdate']) -> name('update-product-image');
 Route::post('/thumbnail/update', [ProductController::class, 'ThumbnailImageUpdate']) -> name('update-product-thumbnail');
 
+Route::get('/multiimg/delete/{id}', [ProductController::class, 'MultiImageDelete']) -> name('product.multiimg.delete');
 
 });
