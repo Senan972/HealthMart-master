@@ -403,6 +403,51 @@
 
     </section>
 
+    {{-- ////////Thumbnail Img update area////////// --}}
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box bt-3 border-info">
+                    <div class="box-header">
+                        <h4 class="box-title">Product Thumbnail Images <strong>Update</strong></h4>
+                    </div>
+                    <form action="{{ route('update-product-thumbnail') }}" method="post" enctype="multipart/form-data">
+                    @csrf
+                    <input type="hidden" name="id" value="{{ $products -> id }}">
+                    <input type="hidden" name="old_img" value="{{ $products -> product_thumbnail }}" id="">
+                        <div class="row row-sm">
+                            
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <img src="{{ asset($products -> product_thumbnail) }}" class="card-img-top" style="height: 130px; width: 280px;">
+                                    <div class="card-body">
+                                        
+                                        <p class="card-text">
+                                            <div class="form-group">
+                                                <label for="" class="form-control-label">Change Image <span class="txt-danger">*</span></label>
+                                                <input type="file" name="product_thumbnail" class="form-control" onchange="mainThumbUrl(this)" > <img src="" id="mainThumb" alt=""> </div>
+
+                                            </div>
+                                        </p>
+                                        
+                                    </div>
+                                </div>
+
+                            </div>
+                            
+                        </div>
+
+                        <div class="text-xs-right">
+                            <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Update Image">
+                        </div>
+                        <br>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+    </section>
 
 </div>
 

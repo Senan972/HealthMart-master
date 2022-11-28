@@ -103,6 +103,7 @@ Route::get('/edit/{id}', [ProductController::class, 'EditProduct']) -> name('pro
 
 Route::post('/data/update', [ProductController::class, 'ProductDataUpdate']) -> name('product-update');
 Route::post('/image/update', [ProductController::class, 'MultiImageUpdate']) -> name('update-product-image');
+Route::post('/thumbnail/update', [ProductController::class, 'ThumbnailImageUpdate']) -> name('update-product-thumbnail');
 
 
 });
