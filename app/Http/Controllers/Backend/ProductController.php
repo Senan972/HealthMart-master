@@ -62,6 +62,7 @@ class ProductController extends Controller
 
         ]);
 
+        //multi img upload
         $images = $request -> file('multi_img');
         foreach ($images as $img) {
             $make_name = hexdec(uniqid()).'.'.$img -> getClientOriginalExtension();
@@ -87,5 +88,82 @@ class ProductController extends Controller
     public function ManageProduct() {
         $products = Product::latest() -> get();
         return view('backend.product.product_view', compact('products'));
+    }
+
+    public function EditProduct($id) {
+
+        $multiImgs = MultiImg::where('product_id', $id) -> get();
+
+        $categories = Category::latest() -> get();
+        $brands = Brand::latest() -> get();
+        $subcategory = SubCategory::latest() -> get();
+        $childcategory = ChildCategory::latest() -> get();
+        $products = Product::findOrFail($id);
+        return view('backend.product.product_edit', compact('categories','brands', 'subcategory', 'childcategory', 'products', 'multiImgs'));
+    }
+
+    public function ProductDataUpdate(Request $request) {
+        $product_id = $request -> id;
+        Product::findOrFail($product_id) -> update([
+            'brand_id' => $request -> brand_id,
+            'category_id' => $request -> category_id,
+            'subcategory_id' => $request -> subcategory_id,
+            'childcategory_id' => $request -> childcategory_id,
+            'product_name_en' => $request -> product_name_en,
+            'product_name_ur' => $request -> product_name_ur,
+            'product_slug_en' => strtolower(str_replace(' ', '-', $request -> product_name_en)),
+            'product_slug_ur' => str_replace(' ', '-', $request -> product_name_ur),
+
+            'product_code' => $request -> product_code,
+            'product_qty' => $request -> product_qty,
+            'product_tags_en' => $request -> product_tags_en,
+            'product_tags_ur' => $request -> product_tags_ur,
+            'product_size_en' => $request -> product_size_en,
+            'product_size_ur' => $request -> product_size_ur,
+            'selling_price' => $request -> selling_price,
+            'discount_price' => $request -> discount_price,
+
+            'short_desc_en' => $request -> short_desc_en,
+            'short_desc_ur' => $request -> short_desc_ur,
+            'long_desc_en' => $request -> long_desc_en,
+            'long_desc_ur' => $request -> long_desc_ur,
+            'hot_deals' => $request -> hot_deals,
+            'featured' => $request -> featured,
+            'special_offer' => $request -> special_offer,
+            'special_deals' => $request -> special_deals,
+
+            'status' => 1,
+            'created_at' => Carbon::now(),
+
+        ]);
+
+        $notification = array(
+            'message' => 'Product Updated Without Image Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect() -> route('manage-product') -> with($notification);
+    }
+    public function MultiImageUpdate(Request $request) {
+        $imgs = $request -> multi_img;
+        foreach ($imgs as $id => $img) {
+            $imgDel = MultiImg::findOrFail($id);
+            unlink($imgDel -> photo_name);
+
+            $make_name = hexdec(uniqid()).'.'.$img -> getClientOriginalExtension();
+            Image::make($img) -> resize(917,1000) -> save('upload/products/multi-image/'.$make_name);
+            $uploadPath = 'upload/products/multi-image/'.$make_name;
+
+            MultiImg::where('id', $id) -> update([
+                'photo_name' => $uploadPath,
+                'updated_at' => Carbon::now(),
+            ]);
+        } //end foreach
+        $notification = array(
+            'message' => 'Product Image Updated Successfully',
+            'alert-type' => 'info'
+        );
+
+        return redirect() -> back() -> with($notification);
     }
 }
