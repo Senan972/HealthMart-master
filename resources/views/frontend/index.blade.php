@@ -20,18 +20,29 @@
                 <ul class="dropdown-menu mega-menu">
                   <li class="yamm-content">
                     <div class="row">
+                      @php
+                      $subcategories = App\Models\SubCategory::where('category_id', $category -> id) -> orderBy('subcategory_name_en','ASC') -> get();
+                      @endphp
+                      
+                      @foreach ($subcategories as $subcategory)
                       <div class="col-sm-12 col-md-3">
+                        <h2 class="title">
+                          @if(session() -> get('language') == 'urdu') {{ $subcategory -> subcategory_name_ur }} @else {{ $subcategory -> subcategory_name_en }} @endif
+                        </h2>
+
+                        @php
+                        $childcategories = App\Models\ChildCategory::where('subcategory_id', $subcategory -> id) -> orderBy('childcategory_name_en','ASC') -> get();
+                        @endphp
+
+                        @foreach ($childcategories as $childcategory)
                         <ul class="links list-unstyled">
-                          <li><a href="#">Panadol</a></li>
-                          <li><a href="#">Ibrufen</a></li>
-                          <li><a href="#">Flagyl</a></li>
-                          <li><a href="#">Zyrtec</a></li>
-                          <li><a href="#">Leflox</a></li>
-                          <li><a href="#">Herbiotics</a></li>
-                          <li><a href="#">Olcuf</a></li>
-                          <li><a href="#">Nexum</a></li>
+                          <li><a href="#">
+                            @if(session() -> get('language') == 'urdu') {{ $childcategory -> childcategory_name_ur }} @else {{ $childcategory -> childcategory_name_en }} @endif
+                          </a></li>
                         </ul>
-                    </div>
+                        @endforeach
+                      </div>
+                      @endforeach
                     <!-- /.row --> 
                   </li>
                   <!-- /.yamm-content -->
