@@ -12,7 +12,11 @@
           <div class="head"><i class="icon fa fa-align-justify fa-fw"></i> Categories</div>
           <nav class="yamm megamenu-horizontal">
             <ul class="nav">
-              <li class="dropdown menu-item"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon fa fa-shopping-bag" aria-hidden="true"></i>Medicines</a>
+
+              @foreach ($categories as $category)
+              <li class="dropdown menu-item"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon {{ $category -> category_icon }}" aria-hidden="true"></i>
+                @if(session() -> get('language') == 'urdu') {{ $category -> category_name_ur }} @else {{ $category -> category_name_en }} @endif
+                </a>
                 <ul class="dropdown-menu mega-menu">
                   <li class="yamm-content">
                     <div class="row">
@@ -34,97 +38,11 @@
                 </ul>
                 <!-- /.dropdown-menu --> </li>
               <!-- /.menu-item -->
+              @endforeach
               
-              <li class="dropdown menu-item"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon fa fa-laptop" aria-hidden="true"></i>Everyday Essentials</a> 
-                <!-- ================================== MEGAMENU VERTICAL ================================== -->
-                <ul class="dropdown-menu mega-menu">
-                  <li class="yamm-content">
-                    <div class="row">
-                      <div class="col-xs-12 col-sm-12 col-lg-4">
-                        <ul>
-                          <li><a href="#">Air Freshners</a></li>
-                          <li><a href="#">Cleaning Supplies</a></li>
-                          <li><a href="#">Cold Relief</a></li>
-                          <li><a href="#">First Aid</a></li>
-                          <li><a href="#">Personal Protective Equipment</a></li>
-                          <li><a href="#">Repellents</a></li>
-                          <li><a href="#">Sanitizers & Antiseptics</a></li>
-                          <li><a href="#">Tissue & Toilet Papers</a></li>
-                        </ul>
-                      </div>
-                      <div class="dropdown-banner-holder"> <a href="#"><img alt="" src="{{ asset('frontend/assets/images/banners/banner-side.png') }}" /></a> </div>
-                    </div>
-                    <!-- /.row --> 
-                  </li>
-                  <!-- /.yamm-content -->
-                </ul>
-                <!-- /.dropdown-menu --> 
-                <!-- ================================== MEGAMENU VERTICAL ================================== --> </li>
-              <!-- /.menu-item -->
               
-              <li class="dropdown menu-item"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon fa fa-paw" aria-hidden="true"></i>Infection Control</a>
-                <ul class="dropdown-menu mega-menu">
-                  <li class="yamm-content">
-                    <div class="row">
-                      <div class="col-sm-12 col-md-3">
-                        <ul class="links list-unstyled">
-                          <li><a href="#">Cidex</a></li>
-                          <li><a href="#">Disinfectant Sprays</a></li>
-                          <li><a href="#">Disinfectant Wipes</a></li>
-                          <li><a href="#">Hand Hygiene</a></li>
-                          <li><a href="#">Coronavirus Medical Supplies</a></li>
-                          <li><a href="#">High-Level Disinfectants</a></li>
-                          <li><a href="#">Instrument Cleaners</a></li>
-                          <li><a href="#">Sharps Containers</a></li>
-                        </ul>
-                      </div>
-                    </div>
-                    <!-- /.row --> 
-                  </li>
-                  <!-- /.yamm-content -->
-                </ul>
-                <!-- /.dropdown-menu --> </li>
-              <!-- /.menu-item -->
+
               
-              <li class="dropdown menu-item"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon fa fa-clock-o"></i>Mecical Apparel</a>
-                <ul class="dropdown-menu mega-menu">
-                  <li class="yamm-content">
-                    <div class="row">
-                      <div class="col-xs-12 col-sm-12 col-lg-4">
-                        <ul>
-                          <li><a href="#">Patient Clothing</a></li>
-                          <li><a href="#">Staff</a></li>
-                          <li><a href="#">Surgical Gowns</a></li>
-                        </ul>
-                      </div>
-                    </div>
-                    <!-- /.row --> 
-                  </li>
-                  <!-- /.yamm-content -->
-                </ul>
-                <!-- /.dropdown-menu --> </li>
-              <!-- /.menu-item -->
-              
-              <li class="dropdown menu-item"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon fa fa-diamond"></i>Medical Furniture</a>
-                <ul class="dropdown-menu mega-menu">
-                  <li class="yamm-content">
-                    <div class="row">
-                      <div class="col-sm-12 col-md-3">
-                        <ul class="links list-unstyled">
-                          <li><a href="#">Cabinets</a></li>
-                          <li><a href="#">Seating</a></li>
-                          <li><a href="#">Step Stools</a></li>
-                          <li><a href="#">Tables</a></li>
-                          <li><a href="#">Bed</a></li>
-                        </ul>
-                      </div>
-                    </div>
-                    <!-- /.row --> 
-                  </li>
-                  <!-- /.yamm-content -->
-                </ul>
-                <!-- /.dropdown-menu --> </li>
-              <!-- /.menu-item -->
               
               <li class="dropdown menu-item"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon fa fa-heartbeat"></i>Medical Supplies</a>
                 <ul class="dropdown-menu mega-menu">
