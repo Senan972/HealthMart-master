@@ -22,7 +22,14 @@ class IndexController extends Controller
         $products = Product::where('status', 1) -> orderBy('id', 'DESC') -> limit(6)-> get();
         $sliders = Slider::where('status', 1) -> orderBy('id', 'DESC') -> limit(3) -> get();
         $categories = Category::orderBy('category_name_en','ASC') -> get();
-        return view('frontend.index', compact('categories', 'sliders', 'products', 'featured', 'hot_deals', 'special_offer', 'special_deals'));
+
+        $skip_category_0 = Category::skip(0) -> first();
+        $skip_product_0 = Product::where('status', 1) -> where('category_id', $skip_category_0 -> id) -> orderBy('id', 'DESC') -> get();
+
+        // return $skip_category -> id;
+        // die();
+
+        return view('frontend.index', compact('categories', 'sliders', 'products', 'featured', 'hot_deals', 'special_offer', 'special_deals', 'skip_category_0', 'skip_product_0'));
     }
 
     public function UserLogout() {
