@@ -1,6 +1,11 @@
 @extends('frontend.main_master')
 @section('content')
 
+
+@section('title')
+HealthMart
+@endsection
+
 <div class="body-content outer-top-xs" id="top-banner-and-menu">
   <div class="container">
     <div class="row"> 
