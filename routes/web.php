@@ -129,3 +129,6 @@ Route::get('/active/{id}', [SliderController::class, 'SliderActive']) -> name('s
 //multi language
 Route::get('/language/urdu', [LanguageController::class, 'Urdu'])->name('urdu.language');
 Route::get('/language/english', [LanguageController::class, 'English'])->name('english.language');
+
+//product detals page url
+Route::get('/product/details/{id}/{slug}', [IndexController::class, 'ProductDetails']);
