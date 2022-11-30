@@ -15,12 +15,13 @@ use Illuminate\Support\Facades\Hash;
 class IndexController extends Controller
 {
     public function index() {
-        $hot_deals = Product::where('hot_deals', 1) -> orderBy('id', 'DESC') -> limit(6)-> get();
+        $special_offer = Product::where('special_offer', 1) -> orderBy('id', 'DESC') -> limit(3)-> get();
+        $hot_deals = Product::where('hot_deals', 1) -> orderBy('id', 'DESC') -> limit(3)-> get();
         $featured = Product::where('featured', 1) -> orderBy('id', 'DESC') -> limit(6)-> get();
         $products = Product::where('status', 1) -> orderBy('id', 'DESC') -> limit(6)-> get();
         $sliders = Slider::where('status', 1) -> orderBy('id', 'DESC') -> limit(3) -> get();
         $categories = Category::orderBy('category_name_en','ASC') -> get();
-        return view('frontend.index', compact('categories', 'sliders', 'products', 'featured', 'hot_deals'));
+        return view('frontend.index', compact('categories', 'sliders', 'products', 'featured', 'hot_deals', 'special_offer'));
     }
 
     public function UserLogout() {
