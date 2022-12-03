@@ -178,9 +178,11 @@
 
                           @foreach ($subcategories as $subcategory)
                           <div class="col-xs-12 col-sm-6 col-md-2 col-menu">
+                            <a href="{{ url('subcategory/product/'.$subcategory -> id.'/'.$subcategory -> subcategory_slug_en) }}">
                             <h2 class="title">
                               @if(session() -> get('language') == 'urdu') {{ $subcategory -> subcategory_name_ur }} @else {{ $subcategory -> subcategory_name_en }} @endif
                             </h2>
+                          </a>
                             @php
                             $childcategories = App\Models\ChildCategory::where('subcategory_id', $subcategory -> id) -> orderBy('childcategory_name_en','ASC') -> get();
                             @endphp

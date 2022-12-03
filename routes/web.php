@@ -134,3 +134,5 @@ Route::get('/language/english', [LanguageController::class, 'English'])->name('e
 Route::get('/product/details/{id}/{slug}', [IndexController::class, 'ProductDetails']);
 //product tags page url
 Route::get('/product/tag/{tag}', [IndexController::class, 'TagWiseProduct']);
+//sub category wise data
+Route::get('/subcategory/product/{subcat_id}/{slug}', [IndexController::class, 'SubCatWiseProduct']);
