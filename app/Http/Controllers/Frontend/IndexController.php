@@ -129,4 +129,17 @@ class IndexController extends Controller
 
         return view('frontend.product.subcategory_view', compact('products', 'categories'));
     }
+
+    public function ProductViewAjax($id) {
+        $product = Product::findOrFail($id);
+
+        $size = $product -> product_size_en;
+        $product_size = explode(',', $size);
+
+        return response() -> json(array(
+            'product' => $product,
+            'size' => $product_size_en,
+
+        ));
+    }
 }

@@ -136,3 +136,5 @@ Route::get('/product/details/{id}/{slug}', [IndexController::class, 'ProductDeta
 Route::get('/product/tag/{tag}', [IndexController::class, 'TagWiseProduct']);
 //sub category wise data
 Route::get('/subcategory/product/{subcat_id}/{slug}', [IndexController::class, 'SubCatWiseProduct']);
+//Product view modal with Ajax
+Route::get('/product/view/modal/{id}', [IndexController::class, 'ProductViewAjax']);
