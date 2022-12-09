@@ -5,7 +5,10 @@
 
 <!-- ================================== TOP NAVIGATION ================================== -->
 <div class="side-menu animate-dropdown outer-bottom-xs">
-    <div class="head"><i class="icon fa fa-align-justify fa-fw"></i> Categories</div>
+    <div class="head"><i class="icon fa fa-align-justify fa-fw"></i>
+@if(session()->get('language') == 'urdu') {{ 'اقسام' }} @else {{ 'CATEGORIES' }} @endif
+    
+    </div>
     <nav class="yamm megamenu-horizontal">
       <ul class="nav">
 
@@ -50,27 +53,7 @@
         
         
 
-        
-        
-        <li class="dropdown menu-item"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon fa fa-heartbeat"></i>Medical Supplies</a>
-          <ul class="dropdown-menu mega-menu">
-            <li class="yamm-content">
-              <div class="row">
-                <div class="col-xs-12 col-sm-12 col-lg-4">
-                  <ul>
-                    <li><a href="#">Exam Room Supplies</a></li>
-                    <li><a href="#">IV Products</a></li>
-                    <li><a href="#">Needles and Syringes</a></li>
-                    <li><a href="#">Safety and Emergency</a></li>
-                  </ul>
-                </div>
-              </div>
-              <!-- /.row --> 
-            </li>
-            <!-- /.yamm-content -->
-          </ul>
-          <!-- /.dropdown-menu --> </li>
-        <!-- /.menu-item -->
+      
       </ul>
       <!-- /.nav --> 
     </nav>

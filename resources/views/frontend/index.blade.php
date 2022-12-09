@@ -24,7 +24,10 @@ HealthMart
         <!-- ============================================== SPECIAL OFFER ============================================== -->
         
         <div class="sidebar-widget outer-bottom-small wow fadeInUp">
-          <h3 class="section-title">Special Offer</h3>
+          <h3 class="section-title">
+@if(session()->get('language') == 'urdu') {{ 'خصوصی پیشکش' }} @else {{ 'SPECIAL OFFER' }} @endif
+
+          </h3>
           <div class="sidebar-widget-body outer-top-xs">
             <div class="owl-carousel sidebar-carousel special-offer custom-carousel owl-theme outer-top-xs">
               
@@ -76,7 +79,7 @@ HealthMart
         <!-- ============================================== SPECIAL OFFER : END ============================================== --> 
         <!-- ============================================== PRODUCT TAGS ============================================== -->
         {{-- @ frontend common product tags blade php --}}
-        @include('frontend.common.product_tags')
+        {{-- @include('frontend.common.product_tags') --}}
         <!-- ============================================== PRODUCT TAGS : END ============================================== --> 
         <!-- ============================================== SPECIAL DEALS ============================================== -->
         
@@ -153,7 +156,7 @@ HealthMart
         
         <!-- ============================================== Testimonials: END ============================================== -->
         
-        <div class="home-banner"> <img src="{{ asset('frontend/assets/images/banners/LHS-banner.jpg') }}" alt="Image"> </div>
+        {{-- <div class="home-banner"> <img src="{{ asset('#') }}" alt="Image"> </div> --}}
       </div>
       <!-- /.sidemenu-holder --> 
       <!-- ============================================== SIDEBAR : END ============================================== --> 
@@ -194,10 +197,16 @@ HealthMart
                 <div class="info-box">
                   <div class="row">
                     <div class="col-xs-12">
-                      <h4 class="info-box-heading green">money back</h4>
+                      <h4 class="info-box-heading green">
+@if(session()->get('language') == 'urdu') {{ 'پیسے واپس' }} @else {{ 'MONEY BACK' }} @endif
+
+                      </h4>
                     </div>
                   </div>
-                  <h6 class="text">30 Days Money Back Guarantee</h6>
+                  <h6 class="text">
+@if(session()->get('language') == 'urdu') {{ 'تیس دن کی منی بیک گارنٹی' }} @else {{ '30 Days Money Back Guarantee' }} @endif
+
+                  </h6>
                 </div>
               </div>
               <!-- .col -->
@@ -206,10 +215,16 @@ HealthMart
                 <div class="info-box">
                   <div class="row">
                     <div class="col-xs-12">
-                      <h4 class="info-box-heading green">free shipping</h4>
+                      <h4 class="info-box-heading green">
+@if(session()->get('language') == 'urdu') {{ 'مفت ترسیل' }} @else {{ 'FREE SHIPPING' }} @endif
+
+                      </h4>
                     </div>
                   </div>
-                  <h6 class="text">Shipping on orders over Rs.99</h6>
+                  <h6 class="text">
+@if(session()->get('language') == 'urdu') {{ 'ننانوے روپے سے زیادہ کے آرڈر پر شپنگ' }} @else {{ 'Shipping on orders over Rs.99' }} @endif
+
+                  </h6>
                 </div>
               </div>
               <!-- .col -->
@@ -218,10 +233,15 @@ HealthMart
                 <div class="info-box">
                   <div class="row">
                     <div class="col-xs-12">
-                      <h4 class="info-box-heading green">Special Sale</h4>
+                      <h4 class="info-box-heading green">
+@if(session()->get('language') == 'urdu') {{ 'خصوصی فروخت' }} @else {{ 'Special Sale' }} @endif
+
+                      </h4>
                     </div>
                   </div>
-                  <h6 class="text">Extra Rs.5 off on all items </h6>
+                  <h6 class="text">
+@if(session()->get('language') == 'urdu') {{ 'تمام اشیاء پر 5 روپے کی اضافی چھوٹ' }} @else {{ 'Extra Rs.5 off on all items' }} @endif
+</h6>
                 </div>
               </div>
               <!-- .col --> 
@@ -236,12 +256,21 @@ HealthMart
         <!-- ============================================== SCROLL TABS ============================================== -->
         <div id="product-tabs-slider" class="scroll-tabs outer-top-vs wow fadeInUp">
           <div class="more-info-tab clearfix ">
-            <h3 class="new-product-title pull-left">New Products</h3>
-            <ul class="nav nav-tabs nav-tab-line pull-right" id="new-products-1">
-              <li class="active"><a data-transition-type="backSlide" href="#all" data-toggle="tab">All</a></li>
+            <h3 class="new-product-title pull-left">
+@if(session()->get('language') == 'urdu') {{ 'نئی مصنوعات' }} @else {{ 'New Products' }} @endif
 
-              @foreach($categories as $category)
-  <li><a data-transition-type="backSlide" href="#category{{ $category->id }}" data-toggle="tab">{{ $category->category_name_en }}</a></li>
+            </h3>
+            <ul class="nav nav-tabs nav-tab-line pull-right" id="new-products-1">
+              <li class="active"><a data-transition-type="backSlide" href="#all" data-toggle="tab">
+                
+@if(session()->get('language') == 'urdu') {{ 'سب' }} @else {{ 'All' }} @endif
+</a></li>
+
+@foreach($categories as $category)
+  <li><a data-transition-type="backSlide" href="#category{{ $category->id }}" data-toggle="tab">
+@if(session()->get('language') == 'urdu') {{ $category -> category_name_ur }} @else {{ $category -> category_name_en }} @endif
+  
+  </a></li>
               @endforeach
               <!-- <li><a data-transition-type="backSlide" href="#laptop" data-toggle="tab">Electronics</a></li>
               <li><a data-transition-type="backSlide" href="#apple" data-toggle="tab">Shoes</a></li> -->
@@ -452,14 +481,13 @@ HealthMart
           <div class="row">
             <div class="col-md-7 col-sm-7">
               <div class="wide-banner cnt-strip">
-                <div class="image"> <img class="img-responsive" src="{{ asset('frontend/assets/images/banners/home-banner1.jpg') }}" alt=""> </div>
+                
               </div>
               <!-- /.wide-banner --> 
             </div>
             <!-- /.col -->
             <div class="col-md-5 col-sm-5">
               <div class="wide-banner cnt-strip">
-                <div class="image"> <img class="img-responsive" src="{{ asset('frontend/assets/images/banners/home-banner2.jpg') }}" alt=""> </div>
               </div>
               <!-- /.wide-banner --> 
             </div>
@@ -472,7 +500,8 @@ HealthMart
         <!-- ============================================== WIDE PRODUCTS : END ============================================== --> 
         <!-- ============================================== FEATURED PRODUCTS ============================================== -->
         <section class="section featured-product wow fadeInUp">
-          <h3 class="section-title">Featured products</h3>
+          <h3 class="section-title">@if(session()->get('language') == 'urdu') {{ "نمایاں مصنوعات" }} @else {{ "FEATURED PRODUCTS" }} @endif
+          </h3>
           <div class="owl-carousel home-owl-carousel custom-carousel owl-theme outer-top-xs">
             
             @foreach($featured as $product)
@@ -607,7 +636,8 @@ $discount = ($amount/$product->selling_price) * 100;
   <div class="action">
     <ul class="list-unstyled">
       <li class="add-cart-button btn-group">
-        <button data-toggle="tooltip" class="btn btn-primary icon" type="button" title="Add Cart"> <i class="fa fa-shopping-cart"></i> </button>
+        <button data-toggle="modal" class="btn btn-primary icon" type="button" title="Add Cart" data-target="#exampleModal" id="{{ $product -> id }}" onclick="productView(this.id)"> <i class="fa fa-shopping-cart"></i> </button>
+
         <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
       </li>
       <li class="lnk wishlist"> <a data-toggle="tooltip" class="add-to-cart" href="detail.html" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
@@ -720,7 +750,7 @@ $discount = ($amount/$product->selling_price) * 100;
           <div class="row">
             <div class="col-md-12">
               <div class="wide-banner cnt-strip">
-                <div class="image"> <img class="img-responsive" src="{{ asset('frontend/assets/images/banners/home-banner.jpg') }}" alt=""> </div>
+                <div class="image"> <img class="img-responsive" src="{{ asset('#') }}" alt=""> </div>
                 <div class="strip strip-text">
                   <div class="strip-inner">
                     <h2 class="text-right">New Mens Fashion<br>

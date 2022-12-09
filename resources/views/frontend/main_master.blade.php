@@ -91,7 +91,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel"><span id="pname"></span></h5>
+        <h5 class="modal-title" id="exampleModalLabel"><strong><span id="pname"></span> </strong></span> </h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -100,29 +100,28 @@
         <div class="row">
           <div class="col-md-4">
             <div class="card" style="width: 18rem;">
-              <img src="" class="card-img-top" alt="..." style="height: 200px; width: 200px;">
+              <img src="" class="card-img-top" alt="..." style="height: 200px; width: 200px;" id="pimage">
               
             </div>
           </div>
           <div class="col-md-4">
             <ul class="list-group">
-              <li class="list-group-item">Product Price:</li>
-              <li class="list-group-item">Product Code:</li>
-              <li class="list-group-item">Category:</li>
-              <li class="list-group-item">Brand:</li>
-              <li class="list-group-item">Stock:</li>
+              <li class="list-group-item">Product Price: <strong class="text-danger">Rs. <span id="pprice"></span></strong> <del id="oldprice">Rs. </del></li>
+              <li class="list-group-item">Product Code: <strong id="pcode"></strong></li>
+              <li class="list-group-item">Category: <strong id="pcategory"></strong></li>
+              <li class="list-group-item">Brand: <strong id="pbrand"></strong></li>
+              <li class="list-group-item">Stock: <span class="badge badge-pill badge-success" id="available" style="background: green; color: white;"></span> 
+                <span class="badge badge-pill badge-danger" id="stockout" style="background: red; color: white;"></span> 
+              </li>
             </ul>
             
           </div>
           <div class="col-md-4">
-            <div class="form-group">
+            <div class="form-group" id="sizeArea">
               <label for="exampleFormControlSelect1">Choose Size</label>
-              <select class="form-control" id="exampleFormControlSelect1">
+              <select class="form-control" id="exampleFormControlSelect1" name="size">
                 <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
+                
               </select>
             </div>
             <div class="form-group">
@@ -154,8 +153,46 @@ function productView(id) {
     url: '/product/view/modal/'+id,
     dataType: 'json',
     success: function(data){
-      console.log(data)
+      //console.log(data)
       $('#pname').text(data.product.product_name_en);
+      $('#price').text(data.product.selling_price);
+      $('#pcode').text(data.product.product_code);
+      $('#pcategory').text(data.product.category.category_name_en);
+      $('#pbrand').text(data.product.brand.brand_name_en);
+      $('#pimage').attr('src','/'+data.product.product_thumbnail);
+
+      //product price
+      if (data.product.discount_price == null) {
+        $('#pprice').text('');
+        $('#oldprice').text('');
+        $('#pprice').text(data.product.selling_price);
+      } else {
+        $('#pprice').text(data.product.discount_price);
+        $('#oldprice').text(data.product.selling_price);
+        
+      }
+
+      // Start Stock opiton
+      if (data.product.product_qty > 0) {
+              $('#available').text('');
+              $('#stockout').text('');
+              $('#available').text('Available');
+          }else{
+              $('#available').text('');
+              $('#stockout').text('');
+              $('#stockout').text('Out of stock');
+          } // end Stock Option 
+
+      //size
+      $('select[name="size"]').empty();        
+      $.each(data.size,function(key,value){
+          $('select[name="size"]').append('<option value=" '+value+' ">'+value+' </option>')
+          if (data.size == "") {
+              $('#sizeArea').hide();
+          }else{
+              $('#sizeArea').show();
+          }
+      })
     }
   })
 }

@@ -26,10 +26,10 @@
         
         <div class="cnt-block">
           <ul class="list-unstyled list-inline">
-            <li class="dropdown dropdown-small"> <a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown"><span class="value">USD </span><b class="caret"></b></a>
+            <li class="dropdown dropdown-small"> <a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown"><span class="value">PKR </span><b class="caret"></b></a>
               <ul class="dropdown-menu">
+                <li><a href="#">PKR</a></li>
                 <li><a href="#">USD</a></li>
-                <li><a href="#">INR</a></li>
                 <li><a href="#">GBP</a></li>
               </ul>
             </li>
@@ -63,7 +63,7 @@
         <div class="col-xs-12 col-sm-12 col-md-3 logo-holder"> 
           
           <!-- ============================================================= LOGO ============================================================= -->
-          <div class="logo"> <a href="{{ url('/') }}"> <img src="{{ asset('frontend/assets/images/logo.png') }}" alt="logo"> </a> </div>
+          <div class="logo"> <a href="{{ url('/') }}"> <h2 style="color: azure;">HealthMart</h2></a> </div>
           <!-- /.logo --> 
           <!-- ============================================================= LOGO : END ============================================================= --> </div>
         <!-- /.logo-holder -->
@@ -75,7 +75,10 @@
             <form>
               <div class="control-group">
                 <ul class="categories-filter animate-dropdown">
-                  <li class="dropdown"> <a class="dropdown-toggle"  data-toggle="dropdown" href="category.html">Categories <b class="caret"></b></a>
+                  <li class="dropdown"> <a class="dropdown-toggle"  data-toggle="dropdown" href="category.html">
+@if(session()->get('language') == 'urdu') {{ 'اقسام' }} @else {{ 'CATEGORIES' }} @endif
+                    
+                    <b class="caret"></b></a>
                     <ul class="dropdown-menu" role="menu" >
                       <li class="menu-header">Computer</li>
                       <li role="presentation"><a role="menuitem" tabindex="-1" href="category.html">- Clothing</a></li>
@@ -100,7 +103,7 @@
             <div class="items-cart-inner">
               <div class="basket"> <i class="glyphicon glyphicon-shopping-cart"></i> </div>
               <div class="basket-item-count"><span class="count">2</span></div>
-              <div class="total-price-basket"> <span class="lbl">cart -</span> <span class="total-price"> <span class="sign">$</span><span class="value">600.00</span> </span> </div>
+              <div class="total-price-basket"> <span class="lbl">cart -</span> <span class="total-price"> <span class="sign">Rs.</span><span class="value">60.00</span> </span> </div>
             </div>
             </a>
             <ul class="dropdown-menu">
@@ -112,7 +115,7 @@
                     </div>
                     <div class="col-xs-7">
                       <h3 class="name"><a href="index.php?page-detail">Simple Product</a></h3>
-                      <div class="price">$600.00</div>
+                      <div class="price">Rs. 60.00</div>
                     </div>
                     <div class="col-xs-1 action"> <a href="#"><i class="fa fa-trash"></i></a> </div>
                   </div>
@@ -121,7 +124,7 @@
                 <div class="clearfix"></div>
                 <hr>
                 <div class="clearfix cart-total">
-                  <div class="pull-right"> <span class="text">Sub Total :</span><span class='price'>$600.00</span> </div>
+                  <div class="pull-right"> <span class="text">Sub Total :</span><span class='price'>Rs. 60.00</span> </div>
                   <div class="clearfix"></div>
                   <a href="checkout.html" class="btn btn-upper btn-primary btn-block m-t-20">Checkout</a> </div>
                 <!-- /.cart-total--> 
@@ -200,7 +203,7 @@
                           <!-- /.col -->
                           @endforeach
                           
-                          <div class="col-xs-12 col-sm-6 col-md-4 col-menu banner-image"> <img class="img-responsive" src="{{ asset('frontend/assets/images/banners/top-menu-banner.jpg') }}" alt=""> </div>
+                          <div class="col-xs-12 col-sm-6 col-md-4 col-menu banner-image"> <img class="img-responsive" src="{{ asset('#') }}" alt=""> </div>
                           <!-- /.yamm-content --> 
                         </div>
                       </div>
@@ -209,7 +212,10 @@
                 </li>
                 @endforeach
                 
-                <li class="dropdown  navbar-right special-menu"> <a href="#">Todays offer</a> </li>
+                <li class="dropdown  navbar-right special-menu"> <a href="#">
+@if(session()->get('language') == 'urdu') {{ 'آج کی پیشکش' }} @else {{ 'TODAYS OFFER' }} @endif
+                  
+                </a> </li>
               </ul>
               <!-- /.navbar-nav -->
               <div class="clearfix"></div>

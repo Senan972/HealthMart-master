@@ -23,7 +23,7 @@
 			<div class='col-md-3 sidebar'>
 				<div class="sidebar-module-container">
 				<div class="home-banner outer-top-n">
-<img src="{{ asset('frontend/assets/images/banners/LHS-banner.jpg') }}" alt="Image">
+{{-- <img src="{{ asset('frontend/assets/images/banners/LHS-banner.jpg') }}" alt="Image"> --}}
 </div>		
   
     

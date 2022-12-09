@@ -16,12 +16,12 @@ use Illuminate\Support\Facades\Hash;
 class IndexController extends Controller
 {
     public function index() {
-        $special_deals = Product::where('special_deals', 1) -> orderBy('id', 'DESC') -> limit(3)-> get();
-        $special_offer = Product::where('special_offer', 1) -> orderBy('id', 'DESC') -> limit(3)-> get();
-        $hot_deals = Product::where('hot_deals', 1) -> where('discount_price', '!=', NULL) -> orderBy('id', 'DESC') -> limit(3)-> get();
-        $featured = Product::where('featured', 1) -> orderBy('id', 'DESC') -> limit(6)-> get();
-        $products = Product::where('status', 1) -> orderBy('id', 'DESC') -> limit(6)-> get();
-        $sliders = Slider::where('status', 1) -> orderBy('id', 'DESC') -> limit(3) -> get();
+        $special_deals = Product::where('special_deals', 1) -> where('status', 1) -> orderBy('id', 'DESC') -> limit(3)-> get();
+        $special_offer = Product::where('special_offer', 1) -> where('status', 1) -> orderBy('id', 'DESC') -> limit(3)-> get();
+        $hot_deals = Product::where('hot_deals', 1) -> where('discount_price', '!=', NULL) -> where('status', 1) -> orderBy('id', 'DESC') -> limit(3)-> get();
+        $featured = Product::where('featured', 1) -> where('status', 1) -> orderBy('id', 'DESC') -> limit(6)-> get();
+        $products = Product::where('status', 1) -> where('status', 1) -> orderBy('id', 'DESC') -> limit(6)-> get();
+        $sliders = Slider::where('status', 1) -> where('status', 1) -> orderBy('id', 'DESC') -> limit(3) -> get();
         $categories = Category::orderBy('category_name_en','ASC') -> get();
 
         $skip_category_0 = Category::skip(0) -> first();
@@ -124,22 +124,23 @@ class IndexController extends Controller
     }
 
     public function SubCatWiseProduct($subcat_id, $slug) {
-		$products = Product::where('status',1)->where('subcategory_id',$subcat_id)->orderBy('id','DESC')->paginate(3);
+		$products = Product::where('status', 1)->where('subcategory_id',$subcat_id)->orderBy('id','DESC')->paginate(3);
         $categories = Category::orderBy('category_name_en','ASC') -> get();
 
         return view('frontend.product.subcategory_view', compact('products', 'categories'));
     }
 
     public function ProductViewAjax($id) {
-        $product = Product::findOrFail($id);
+        $product = Product::with('category', 'brand') -> findOrFail($id);
 
-        $size = $product -> product_size_en;
-        $product_size = explode(',', $size);
+		$size = $product->product_size_en;
+		$product_size = explode(',', $size);
 
-        return response() -> json(array(
-            'product' => $product,
-            'size' => $product_size_en,
+		return response()->json(array(
+			'product' => $product,
+			'size' => $product_size,
 
-        ));
+		));
+
     }
 }
