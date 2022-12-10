@@ -13,7 +13,10 @@ Sub Category | HealthMart
       <div class="breadcrumb-inner">
         <ul class="list-inline list-unstyled">
           <li><a href="#">Home</a></li>
-          <li class='active'>Handbags</li>
+          <li class='active'>
+            @if(session() -> get('language') == 'urdu') {{ 'مرض قلب' }} @else {{ 'Heart Disease' }} @endif
+
+          </li>
         </ul>
       </div>
       <!-- /.breadcrumb-inner --> 
@@ -91,45 +94,42 @@ Sub Category | HealthMart
               </div>
               <!-- /.sidebar-widget --> 
               <!-- ============================================== PRICE SILDER : END ============================================== --> 
-              <!-- ============================================== MANUFACTURES============================================== -->
+              <!-- ============================================== BRANDS============================================== -->
               <div class="sidebar-widget wow fadeInUp">
                 <div class="widget-header">
-                  <h4 class="widget-title">Manufactures</h4>
+                  <h4 class="widget-title">Brands</h4>
                 </div>
                 <div class="sidebar-widget-body">
                   <ul class="list">
-                    <li><a href="#">Forever 18</a></li>
-                    <li><a href="#">Nike</a></li>
-                    <li><a href="#">Dolce & Gabbana</a></li>
-                    <li><a href="#">Alluare</a></li>
-                    <li><a href="#">Chanel</a></li>
-                    <li><a href="#">Other Brand</a></li>
+                    <li><a href="#">GlaxoSmithKline Pakistan</a></li>
+                    <li><a href="#">Martin Dow</a></li>
+                    <li><a href="#">Zafa Pharmaceutical Limited</a></li>
+                    <li><a href="#">Sami</a></li>
+                    <li><a href="#">Don valley pharma</a></li>
                   </ul>
                   <!--<a href="#" class="lnk btn btn-primary">Show Now</a>--> 
                 </div>
                 <!-- /.sidebar-widget-body --> 
               </div>
               <!-- /.sidebar-widget --> 
-              <!-- ============================================== MANUFACTURES: END ============================================== --> 
-              <!-- ============================================== COLOR============================================== -->
+              <!-- ============================================== BRANDS: END ============================================== --> 
+              <!-- ============================================== TYPE============================================== -->
               <div class="sidebar-widget wow fadeInUp">
                 <div class="widget-header">
-                  <h4 class="widget-title">Colors</h4>
+                  <h4 class="widget-title">Type</h4>
                 </div>
                 <div class="sidebar-widget-body">
                   <ul class="list">
-                    <li><a href="#">Red</a></li>
-                    <li><a href="#">Blue</a></li>
-                    <li><a href="#">Yellow</a></li>
-                    <li><a href="#">Pink</a></li>
-                    <li><a href="#">Brown</a></li>
-                    <li><a href="#">Teal</a></li>
+                    <li><a href="#">Pills</a></li>
+                    <li><a href="#">Capsule</a></li>
+                    <li><a href="#">Injection</a></li>
+                    <li><a href="#">Equipments</a></li>
                   </ul>
                 </div>
                 <!-- /.sidebar-widget-body --> 
               </div>
               <!-- /.sidebar-widget --> 
-              <!-- ============================================== COLOR: END ============================================== --> 
+              <!-- ============================================== TYPE: END ============================================== --> 
               <!-- ============================================== COMPARE============================================== -->
               <div class="sidebar-widget wow fadeInUp outer-top-vs">
                 <h3 class="section-title">Compare products</h3>
