@@ -186,7 +186,7 @@ Route::get('/active/{id}', [SliderController::class, 'SliderActive'])->name('sli
 //// Frontend All Routes /////
 /// Multi Language All Routes ////
 
-Route::get('/language/urdu', [LanguageController::class, 'Hindi'])->name('urdu.language');
+Route::get('/language/urdu', [LanguageController::class, 'Urdu'])->name('urdu.language');
 
 Route::get('/language/english', [LanguageController::class, 'English'])->name('english.language');
 
