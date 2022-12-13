@@ -10,12 +10,16 @@ use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\Backend\ShippingAreaController;
+use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Frontend\LanguageController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\User\WishlistController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\User\CartPageController;
 use App\Http\Controllers\User\CheckoutController;
+use App\Http\Controllers\User\StripeController;
+use App\Http\Controllers\User\CashController;
+use App\Http\Controllers\User\AllUserController;
 use App\Models\User;
 
 /*
@@ -241,17 +245,8 @@ Route::get('/order_details/{order_id}', [AllUserController::class, 'OrderDetails
 
 Route::get('/invoice_download/{order_id}', [AllUserController::class, 'InvoiceDownload']);
 
-Route::post('/return/order/{order_id}', [AllUserController::class, 'ReturnOrder'])->name('return.order');
-
-Route::get('/return/order/list', [AllUserController::class, 'ReturnOrderList'])->name('return.order.list');
-
-Route::get('/cancel/orders', [AllUserController::class, 'CancelOrders'])->name('cancel.orders');
-    
-
-/// Order Traking Route 
-Route::post('/order/tracking', [AllUserController::class, 'OrderTraking'])->name('order.tracking');    
-
 });
+
 
 
 
@@ -344,3 +339,26 @@ Route::get('/district-get/ajax/{division_id}', [CheckoutController::class, 'Dist
 Route::get('/state-get/ajax/{district_id}', [CheckoutController::class, 'StateGetAjax']);
 
 Route::post('/checkout/store', [CheckoutController::class, 'CheckoutStore'])->name('checkout.store');
+
+
+// Admin Order All Routes 
+Route::prefix('orders')->group(function(){
+
+Route::get('/pending/orders', [OrderController::class, 'PendingOrders'])->name('pending-orders');
+    
+Route::get('/pending/orders/details/{order_id}', [OrderController::class, 'PendingOrdersDetails'])->name('pending.order.details');
+
+Route::get('/confirmed/orders', [OrderController::class, 'ConfirmedOrders'])->name('confirmed-orders');
+
+Route::get('/processing/orders', [OrderController::class, 'ProcessingOrders'])->name('processing-orders');
+
+Route::get('/picked/orders', [OrderController::class, 'PickedOrders'])->name('picked-orders');
+
+Route::get('/shipped/orders', [OrderController::class, 'ShippedOrders'])->name('shipped-orders');
+
+Route::get('/delivered/orders', [OrderController::class, 'DeliveredOrders'])->name('delivered-orders');
+
+Route::get('/cancel/orders', [OrderController::class, 'CancelOrders'])->name('cancel-orders');
+
+    
+});

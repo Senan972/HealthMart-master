@@ -113,17 +113,17 @@ My Checkout
 		 <div class="form-group">
 	<h5><b>State Select</b> <span class="text-danger">*</span></h5>
 	<div class="controls">
-		<select name="state_id" class="form-control" required="" >
+		<select name="state_id" class="form-control">
 			<option value="" selected="" disabled="">Select State</option>
-
+			 
 		</select>
 		@error('state_id') 
 	 <span class="text-danger">{{ $message }}</span>
 	 @enderror 
 	 </div>
 		 </div> <!-- // end form group -->
-
-
+				 
+					 
     <div class="form-group">
 	 <label class="info-title" for="exampleInputEmail1">Notes <span>*</span></label>
 	     <textarea class="form-control" cols="30" rows="5" placeholder="Notes" name="notes"></textarea>
@@ -248,7 +248,8 @@ My Checkout
 		    	<div class="col-md-4">
 		    		<label for="">Cash</label> 		
        <input type="radio" name="payment_method" value="cash">	
-		  <img src="{{ asset('frontend/assets/images/payments/2.png') }}">  		
+	   <img src="{{ asset('frontend/assets/images/payments/6.png') }}">  		
+		      		
 		    	</div> <!-- end col md 4 -->
 
 
@@ -285,6 +286,7 @@ My Checkout
 </div><!-- /.body-content -->
 
 
+
 <script type="text/javascript">
       $(document).ready(function() {
         $('select[name="division_id"]').on('change', function(){
@@ -316,7 +318,7 @@ My Checkout
                     success:function(data) {
                        var d =$('select[name="state_id"]').empty();
                           $.each(data, function(key, value){
-                              $('select[name="state_id"]').append('<option value="'+ value.id +'">' + value.state_name + '</option>');
+                              $('select[name="state_id"]').append('<option value="'+ value.id +'">' + value.state_id + '</option>');
                           });
                     },
                 });
@@ -327,9 +329,3 @@ My Checkout
  
     });
     </script>
-
-
-
-
-
-@endsection
