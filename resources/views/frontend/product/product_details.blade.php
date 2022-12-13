@@ -55,7 +55,7 @@
         <div class="item">
             <div class="avatar"><img src="{{ asset('frontend/assets/images/testimonials/member1.png') }}" alt="Image"></div>
 		<div class="testimonials"><em>"</em> Vtae sodales aliq uam morbi non sem lacus port mollis. Nunc condime tum metus eud molest sed consectetuer.<em>"</em></div>
-		<div class="clients_author">John Doe	<span>Abc Company</span>	</div><!-- /.container-fluid -->
+		<div class="clients_author">M. Ali	<span>ER, Islamabad</span>	</div><!-- /.container-fluid -->
         </div><!-- /.item -->
 
          <div class="item">
@@ -119,7 +119,7 @@
 </div><!-- /.gallery-holder -->        			
 					<div class='col-sm-6 col-md-7 product-info-block'>
 						<div class="product-info">
-							<h1 class="name">
+							<h1 class="name" id="pname">
                                 @if(session()->get('language') == 'urdu') {{ $product -> product_name_ur }} @else {{ $product -> product_name_en }} @endif
                             </h1>
 							
@@ -192,45 +192,51 @@
 
 	<div class="col-sm-6">
 		<div class="form-group">
+			@if($product -> product_size_en == null)
+
+			@else
 			<label for="" class="info-title">Choose size</label>
-			<select class="form-control unicase-form-control selectpicker" style="display: none">
+			<select class="form-control unicase-form-control selectpicker" style="display: none" id="size">
 				<option selected="" disabled="">Select size</option>
 				@foreach($product_size_en as $size)
 				<option value="{{ $size }}">{{ ucwords($size) }}</option>
 				@endforeach
 			</select>
+			@endif
 		</div>
 	</div>
 {{-- ================= End Size =================== --}}
 
 </div><!-- /.row -->
 
-							<div class="quantity-container info-container">
-								<div class="row">
-									
-									<div class="col-sm-2">
-										<span class="label">Qty :</span>
-									</div>
-									
-									<div class="col-sm-2">
-										<div class="cart-quantity">
-											<div class="quant-input">
-								                <div class="arrows">
-								                  <div class="arrow plus gradient"><span class="ir"><i class="icon fa fa-sort-asc"></i></span></div>
-								                  <div class="arrow minus gradient"><span class="ir"><i class="icon fa fa-sort-desc"></i></span></div>
-								                </div>
-								                <input type="text" value="1">
-							              </div>
-							            </div>
-									</div>
+	<div class="quantity-container info-container">
+		<div class="row">
+			
+			<div class="col-sm-2">
+				<span class="label">Qty :</span>
+			</div>
+			
+			<div class="col-sm-2">
+				<div class="cart-quantity">
+					<div class="quant-input">
+						<div class="arrows">
+							<div class="arrow plus gradient"><span class="ir"><i class="icon fa fa-sort-asc"></i></span></div>
+							<div class="arrow minus gradient"><span class="ir"><i class="icon fa fa-sort-desc"></i></span></div>
+						</div>
+						<input type="text" id="qty" value="1" min="1">
+					</div>
+				</div>
+			</div>
 
-									<div class="col-sm-7">
-										<a href="#" class="btn btn-primary"><i class="fa fa-shopping-cart inner-right-vs"></i> ADD TO CART</a>
-									</div>
+			<input type="hidden" id="product_id" value="{{ $product -> id }}" min="1">
 
-									
-								</div><!-- /.row -->
-							</div><!-- /.quantity-container -->
+			<div class="col-sm-7">
+				<button type="submit" onclick="addToCart()" class="btn btn-primary"><i class="fa fa-shopping-cart inner-right-vs"></i> ADD TO CART</button>
+			</div>
+
+			
+		</div><!-- /.row -->
+	</div><!-- /.quantity-container -->
 
 							
 

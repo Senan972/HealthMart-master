@@ -10,10 +10,10 @@
               @if(session() -> get('language') == 'urdu') میرا اکاونٹ @else My Account @endif
             </a></li>
             
-            <li><a href="#"><i class="icon fa fa-heart"></i>Wishlist</a></li>
-            <li><a href="#"><i class="icon fa fa-shopping-cart"></i>My Cart</a></li>
-            <li><a href="#"><i class="icon fa fa-check"></i>Checkout</a></li>
-            <li>
+            <li><a href="{{ route('wishlist') }}"><i class="icon fa fa-heart"></i>Wishlist</a></li>
+            <li><a href="{{ route('mycart') }}"><i class="icon fa fa-shopping-cart"></i>My Cart</a></li>
+            <li><a href="{{ route('checkout') }}"><i class="icon fa fa-check"></i>Checkout</a></li>
+<li>
               @auth
               <a href="{{ route('login') }}"><i class="icon fa fa-user"></i>User Profile</a>
               @else
@@ -102,29 +102,23 @@
           <div class="dropdown dropdown-cart"> <a href="#" class="dropdown-toggle lnk-cart" data-toggle="dropdown">
             <div class="items-cart-inner">
               <div class="basket"> <i class="glyphicon glyphicon-shopping-cart"></i> </div>
-              <div class="basket-item-count"><span class="count">2</span></div>
-              <div class="total-price-basket"> <span class="lbl">cart -</span> <span class="total-price"> <span class="sign">Rs.</span><span class="value">60.00</span> </span> </div>
+              <div class="basket-item-count"><span class="count" id="cartQty"></span></div>
+              <div class="total-price-basket"> <span class="lbl">cart -</span> <span class="total-price"> 
+                <span class="sign">Rs.</span><span class="value" id="cartSubTotal"></span> </span> </div>
             </div>
             </a>
             <ul class="dropdown-menu">
               <li>
-                <div class="cart-item product-summary">
-                  <div class="row">
-                    <div class="col-xs-4">
-                      <div class="image"> <a href="detail.html"><img src="{{ asset('frontend/assets/images/cart.jpg') }}" alt=""></a> </div>
-                    </div>
-                    <div class="col-xs-7">
-                      <h3 class="name"><a href="index.php?page-detail">Simple Product</a></h3>
-                      <div class="price">Rs. 60.00</div>
-                    </div>
-                    <div class="col-xs-1 action"> <a href="#"><i class="fa fa-trash"></i></a> </div>
-                  </div>
+                {{-- //mini cart start ajax --}}
+
+                <div id="miniCart">
+
                 </div>
-                <!-- /.cart-item -->
-                <div class="clearfix"></div>
-                <hr>
+
+
+                {{-- // end mini cart --}}
                 <div class="clearfix cart-total">
-                  <div class="pull-right"> <span class="text">Sub Total :</span><span class='price'>Rs. 60.00</span> </div>
+                  <div class="pull-right"> <span class="text">Sub Total :</span><span class='price' id="cartSubTotal"> </span> </div>
                   <div class="clearfix"></div>
                   <a href="checkout.html" class="btn btn-upper btn-primary btn-block m-t-20">Checkout</a> </div>
                 <!-- /.cart-total--> 

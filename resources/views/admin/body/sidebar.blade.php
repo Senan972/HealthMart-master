@@ -89,6 +89,8 @@ $route = Route::current() -> getName();
             
           </ul>
         </li>
+<<<<<<< HEAD
+=======
 
         <li class="treeview {{ ($prefix == '/coupons')? 'active':'' }}">
           <a href="#">
@@ -128,6 +130,7 @@ $route = Route::current() -> getName();
             
           </ul>
         </li>
+>>>>>>> repo-b/main
 		 
         <li class="header nav-small-cap">User Interface</li>
 		  
@@ -145,7 +148,11 @@ $route = Route::current() -> getName();
             <li><a href="components_buttons.html"><i class="ti-more"></i>Buttons</a></li>
             
           </ul>
+<<<<<<< HEAD
+        </li>
+=======
         <li>
+>>>>>>> repo-b/main
 		
 		<li class="treeview">
           <a href="#">

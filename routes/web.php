@@ -1,7 +1,5 @@
 <?php
 
-use App\Models\User; 
- 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\AdminProfileController;
@@ -13,7 +11,12 @@ use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\Backend\ShippingAreaController;
 use App\Http\Controllers\Frontend\LanguageController;
+use App\Http\Controllers\Frontend\CartController;
+use App\Http\Controllers\User\WishlistController;
 use App\Http\Controllers\Frontend\IndexController;
+use App\Http\Controllers\User\CartPageController;
+use App\Http\Controllers\User\CheckoutController;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,7 +28,7 @@ use App\Http\Controllers\Frontend\IndexController;
 | contains the "web" middleware group. Now create something great!
 |
 */
- 
+
 Route::group(['prefix'=> 'admin', 'middleware'=>['admin:admin']], function(){
 	Route::get('/login', [AdminController::class, 'loginForm']);
 	Route::post('/login',[AdminController::class, 'store'])->name('admin.login');
@@ -118,21 +121,15 @@ Route::post('/update', [SubCategoryController::class, 'SubCategoryUpdate'])->nam
 Route::get('/sub/delete/{id}', [SubCategoryController::class, 'SubCategoryDelete'])->name('subcategory.delete');
 
 
-// Admin Sub->Sub Category All Routes
+//Child categories for Admin
 
-Route::get('/sub/sub/view', [SubCategoryController::class, 'SubSubCategoryView'])->name('all.subsubcategory');
-
+Route::get('/sub/child/view', [SubCategoryController::class, 'ChildCategoryView']) -> name('all.childcategory');
 Route::get('/subcategory/ajax/{category_id}', [SubCategoryController::class, 'GetSubCategory']);
-
-Route::get('/sub-subcategory/ajax/{subcategory_id}', [SubCategoryController::class, 'GetSubSubCategory']);
-
-Route::post('/sub/sub/store', [SubCategoryController::class, 'SubSubCategoryStore'])->name('subsubcategory.store');
-
-Route::get('/sub/sub/edit/{id}', [SubCategoryController::class, 'SubSubCategoryEdit'])->name('subsubcategory.edit');
-
-Route::post('/sub/update', [SubCategoryController::class, 'SubSubCategoryUpdate'])->name('subsubcategory.update');
-
-Route::get('/sub/sub/delete/{id}', [SubCategoryController::class, 'SubSubCategoryDelete'])->name('subsubcategory.delete');
+Route::get('/childcategory/ajax/{subcategory_id}', [SubCategoryController::class, 'GetChildCategory']);
+Route::post('/sub/child/store', [SubCategoryController::class, 'ChildCategoryStore']) -> name('childcategory.store');
+Route::get('/sub/child/edit/{id}', [SubCategoryController::class, 'ChildCategoryEdit']) -> name('childcategory.edit');
+Route::post('/sub/child/update', [SubCategoryController::class, 'ChildCategoryUpdate']) -> name('childcategory.update');
+Route::get('/sub/child/delete/{id}', [SubCategoryController::class, 'ChildCategoryDelete']) -> name('childcategory.delete');
 
 });
 
@@ -189,7 +186,7 @@ Route::get('/active/{id}', [SliderController::class, 'SliderActive'])->name('sli
 //// Frontend All Routes /////
 /// Multi Language All Routes ////
 
-Route::get('/language/hindi', [LanguageController::class, 'Hindi'])->name('hindi.language');
+Route::get('/language/urdu', [LanguageController::class, 'Hindi'])->name('urdu.language');
 
 Route::get('/language/english', [LanguageController::class, 'English'])->name('english.language');
 
@@ -329,3 +326,21 @@ Route::get('/state/delete/{id}', [ShippingAreaController::class, 'StateDelete'])
 
  
 });
+
+
+// Frontend Coupon Option
+Route::post('/coupon-apply', [CartController::class, 'CouponApply']);
+
+Route::get('/coupon-calculation', [CartController::class, 'CouponCalculation']);
+
+Route::get('/coupon-remove', [CartController::class, 'CouponRemove']);
+
+
+// Checkout Routes 
+Route::get('/checkout', [CartController::class, 'CheckoutCreate'])->name('checkout');
+
+Route::get('/district-get/ajax/{division_id}', [CheckoutController::class, 'DistrictGetAjax']);
+
+Route::get('/state-get/ajax/{district_id}', [CheckoutController::class, 'StateGetAjax']);
+
+Route::post('/checkout/store', [CheckoutController::class, 'CheckoutStore'])->name('checkout.store');
