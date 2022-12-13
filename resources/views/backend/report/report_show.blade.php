@@ -18,7 +18,7 @@
 
 			 <div class="box">
 				<div class="box-header with-border">
-				  <h3 class="box-title">Picked Orders List</h3>
+				  <h3 class="box-title">Order List</h3>
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body">
@@ -43,10 +43,12 @@
 		<td> ${{ $item->amount }}  </td>
 
 		<td> {{ $item->payment_method }}  </td>
+
 		<td> <span class="badge badge-pill badge-primary">{{ $item->status }} </span>  </td>
 
 		<td width="25%">
  <a href="{{ route('pending.order.details',$item->id) }}" class="btn btn-info" title="Edit Data"><i class="fa fa-eye"></i> </a>
+
  <a target="_blank" href="{{ route('invoice.download',$item->id) }}" class="btn btn-danger" title="Invoice Download">
  	<i class="fa fa-download"></i></a>
 		</td>

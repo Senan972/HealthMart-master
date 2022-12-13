@@ -3,16 +3,16 @@
 
 
   <!-- Content Wrapper. Contains page content -->
-
+  
 	  <div class="container-full">
 		<!-- Content Header (Page header) -->
-
+		 
 
 		<!-- Main content -->
 		<section class="content">
 		  <div class="row">
-
-
+			   
+		 
 
 			<div class="col-12">
 
@@ -32,7 +32,7 @@
 								<th>Payment </th>
 								<th>Status </th>
 								<th>Action</th>
-
+								 
 							</tr>
 						</thead>
 						<tbody>
@@ -46,15 +46,14 @@
 		<td> <span class="badge badge-pill badge-primary">{{ $item->status }} </span>  </td>
 
 		<td width="25%">
-        <a href="{{ route('pending.order.details',$item->id) }}" class="btn btn-info" title="Edit Data"><i class="fa fa-eye"></i> </a>
- <a href="{{ route('coupon.delete',$item->id) }}" class="btn btn-danger" title="Delete Data" id="delete">
- 	<i class="fa fa-trash"></i></a>
+ <a href="{{ route('pending.order.details',$item->id) }}" class="btn btn-info" title="View Data"><i class="fa fa-eye"></i> </a>
+ 
 		</td>
-
+							 
 	 </tr>
 	  @endforeach
 						</tbody>
-
+						 
 					  </table>
 					</div>
 				</div>
@@ -62,22 +61,22 @@
 			  </div>
 			  <!-- /.box -->
 
-
+			          
 			</div>
 			<!-- /.col -->
 
+ 
 
-
-
+ 
 
 
 		  </div>
 		  <!-- /.row -->
 		</section>
 		<!-- /.content -->
-
+	  
 	  </div>
-
+  
 
 
 
