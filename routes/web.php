@@ -152,7 +152,7 @@ Route::post('/data/update', [ProductController::class, 'ProductDataUpdate'])->na
 
 Route::post('/image/update', [ProductController::class, 'MultiImageUpdate'])->name('update-product-image');
 
-Route::post('/thambnail/update', [ProductController::class, 'ThambnailImageUpdate'])->name('update-product-thambnail');
+Route::post('/thumbnail/update', [ProductController::class, 'ThumbnailImageUpdate'])->name('update-product-thumbnail');
 
 Route::get('/multiimg/delete/{id}', [ProductController::class, 'MultiImageDelete'])->name('product.multiimg.delete');
 
@@ -190,7 +190,7 @@ Route::get('/active/{id}', [SliderController::class, 'SliderActive'])->name('sli
 //// Frontend All Routes /////
 /// Multi Language All Routes ////
 
-Route::get('/language/urdu', [LanguageController::class, 'Hindi'])->name('urdu.language');
+Route::get('/language/urdu', [LanguageController::class, 'Urdu'])->name('urdu.language');
 
 Route::get('/language/english', [LanguageController::class, 'English'])->name('english.language');
 
@@ -362,3 +362,4 @@ Route::get('/cancel/orders', [OrderController::class, 'CancelOrders'])->name('ca
 
     
 });
+ 
